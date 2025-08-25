@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Enquiry extends Model
 {
-    protected $table = 'Enquiry';
+    protected $table = 'enquiry';
 
     protected $fillable = ['user_id', 'content'];
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 }

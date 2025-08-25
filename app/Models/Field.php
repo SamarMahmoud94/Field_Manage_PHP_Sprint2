@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Field extends Model
 {
-    protected $table = 'Field';
+    protected $table = 'field';
 
     protected $fillable = ['name', 'images', 'players_capacity'];
 
