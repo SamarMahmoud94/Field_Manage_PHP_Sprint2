@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    protected $table = 'Booking';
+    protected $table = 'booking';
 
     protected $fillable = ['player_id', 'team_id', 'field_slot_id', 'date', 'status', 'price'];
 

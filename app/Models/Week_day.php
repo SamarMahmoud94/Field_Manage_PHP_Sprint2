@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class WeekDay extends Model
 {
-    protected $table = 'Week_day';
+    protected $table = 'week_day';
 
     public $timestamps = false;
 
