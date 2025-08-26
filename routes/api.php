@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\createTeamController;
-
+use App\http\Controllers\BrowseFieldsController;
 // login route
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -15,6 +15,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api'
 Route::post('/signup', [SignupController::class, 'register']);
 
 //Create Team
-use App\Http\Controllers\TeamController;
-
 Route::middleware('auth:api')->post('/CreateTeam', [CreateTeamController::class, 'store']);
+
+//Browse Fields
+Route::middleware('auth:api')->get('/Browsefields', [BrowseFieldsController::class, 'browse']);
