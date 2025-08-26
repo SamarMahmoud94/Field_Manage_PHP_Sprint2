@@ -12,12 +12,12 @@ class Team extends Model
 
     public function players()
     {
-        return $this->belongsToMany(User::class, 'TeamPlayers')
+        return $this->belongsToMany(User::class, 'TeamPlayers', 'team_id', 'user_id')
             ->withPivot('is_leader');
     }
 
     public function bookings()
     {
-        return $this->hasMany(Booking::class);
+        return $this->hasMany(Booking::class, 'team_id');
     }
 }

@@ -12,16 +12,16 @@ class FieldSlot extends Model
 
     public function field()
     {
-        return $this->belongsTo(Field::class);
+        return $this->belongsTo(Field::class, 'field_id');
     }
 
     public function weekDay()
     {
-        return $this->belongsTo(WeekDay::class);
+        return $this->belongsTo(WeekDay::class, 'week_day_id');
     }
 
     public function bookings()
     {
-        return $this->hasMany(Booking::class);
+        return $this->hasMany(Booking::class, 'field_slot_id');
     }
 }

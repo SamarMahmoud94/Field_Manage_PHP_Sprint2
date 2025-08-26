@@ -12,6 +12,6 @@ class Field extends Model
 
     public function slots()
     {
-        return $this->hasMany(FieldSlot::class);
+        return $this->hasMany(FieldSlot::class, 'field_id');
     }
 }
