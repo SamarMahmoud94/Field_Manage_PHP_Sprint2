@@ -17,21 +17,21 @@ class Booking extends Model
 
     public function team()
     {
-        return $this->belongsTo(Team::class);
+        return $this->belongsTo(Team::class, 'team_id');
     }
 
     public function fieldSlot()
     {
-        return $this->belongsTo(FieldSlot::class);
+        return $this->belongsTo(FieldSlot::class, 'field_slot_id');
     }
 
     public function statusChanges()
     {
-        return $this->hasMany(BookingStatusChange::class);
+        return $this->hasMany(BookingStatusChange::class, 'booking_id');
     }
 
     public function review()
     {
-        return $this->hasOne(Review::class);
+        return $this->hasOne(Review::class, 'booking_id');
     }
 }
