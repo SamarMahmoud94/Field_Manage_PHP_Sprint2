@@ -10,6 +10,8 @@ class Team extends Model
 
     protected $fillable = ['name'];
 
+    public $timestamps = false;
+
     public function players()
     {
         return $this->belongsToMany(User::class, 'TeamPlayers', 'team_id', 'user_id')
