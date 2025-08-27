@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\createTeamController;
 use App\http\Controllers\BrowseFieldsController;
+use App\Http\Controllers\ViewFieldDetailsController;
+
 // login route
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -19,3 +21,6 @@ Route::middleware('auth:api')->post('/CreateTeam', [CreateTeamController::class,
 
 //Browse Fields
 Route::middleware('auth:api')->get('/Browsefields', [BrowseFieldsController::class, 'browse']);
+
+//View Field Details
+Route::middleware('auth:api')->get('/ViewFieldDetails',[ViewFieldDetailsController::class, 'view']);

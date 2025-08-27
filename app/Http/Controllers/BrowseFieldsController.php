@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Field;
+//use Illuminate\Container\Attributes\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class BrowseFieldsController extends Controller
 {
     public function browse(Request $request){
+
+        if(Auth::user()->role !== 'player'){
+            return response()->json([
+                'message' => 'Only players can browse fields'
+            ],403);
+        }
+
         $query = Field::with(['slots.weekDay']);
 
         if($request->has('week_day_name')){
