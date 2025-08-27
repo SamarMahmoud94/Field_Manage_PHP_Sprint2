@@ -17,7 +17,17 @@ class SignupController extends Controller
             'email' => 'required|string|email|max:100|unique:user,email',
             'phone' => 'nullable|string|max:20',
             'password' => 'required|string|min:6|confirmed', // password_confirmation required
-            'role' => 'required|in:admin,player'
+            'role' => [
+                'required',
+                'string',
+                function ($attribute, $value, $fail) {
+                    if (!in_array($value, ['admin', 'player'])) {
+                        return response()->json([
+                            'error' => 'Only admin and player are the available roles'
+                        ], 403);
+                    }
+                }
+            ],
         ]);
 
         // 2) Create user
