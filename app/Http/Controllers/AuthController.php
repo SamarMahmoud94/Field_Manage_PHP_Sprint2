@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Models\User;
-
+use App\Models\Team;
 class AuthController extends Controller
 {
     public function login(Request $request)

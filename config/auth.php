@@ -42,7 +42,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'jwt',   // هيتظبط بعد ما تعملي install jwt
+            'driver' => 'jwt',   
             'provider' => 'users',
         ],
     ],

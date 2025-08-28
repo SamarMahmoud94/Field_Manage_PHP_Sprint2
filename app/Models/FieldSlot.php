@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class FieldSlot extends Model
 {
     protected $table = 'fieldslots';
-
+    public $timestamps = false; 
     protected $fillable = ['field_id', 'week_day_id', 'from_time', 'to_time', 'price_per_hour'];
 
     public function field()

@@ -7,6 +7,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
+use App\Models\Team;
+use App\Models\Booking;
+use App\Models\Review;
+use App\Models\Enquiry;
+
+/**
+ * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+ */
+
+
 class User extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable;
@@ -46,9 +56,13 @@ class User extends Authenticatable implements JWTSubject
     }
 
     // Relations
+    /**
+ * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+ */
+
     public function teams()
     {
-        return $this->belongsToMany(Team::class, 'TeamPlayers', 'user_id', 'team_id')
+        return $this->belongsToMany(Team::class, 'teamplayers', 'user_id', 'team_id')
             ->withPivot('is_leader');
     }
 

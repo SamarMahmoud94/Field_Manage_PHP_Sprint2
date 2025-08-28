@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     protected $table = 'booking';
-
-    protected $fillable = ['player_id', 'team_id', 'field_slot_id', 'date', 'status', 'price'];
+    public $timestamps = false;
+    protected $fillable = ['player_id', 'team_id', 'field_slot_id', 'week_day','start_time', 'end_time','status', 'price'];
 
     public function player()
     {
@@ -32,6 +32,6 @@ class Booking extends Model
 
     public function review()
     {
-        return $this->hasOne(Review::class, 'booking_id');
+        return $this->hasMany(Review::class, 'booking_id');
     }
 }
