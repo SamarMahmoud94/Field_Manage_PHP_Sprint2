@@ -9,10 +9,14 @@ use App\Http\Controllers\ViewFieldDetailsController;
 use App\Http\Controllers\BookingFieldController;
 use App\Http\Controllers\Api\Auth\PasswordResetController;
 
-
+//reset password 
 Route::post('/forgot-password', [PasswordResetController::class, 'forgotPassword']);
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword']);
+// update profile 
 
+Route::middleware('auth:api')->group(function() {
+    Route::post('/profile/update', [App\Http\Controllers\Api\Auth\ProfileController::class, 'update']);
+});
 
 // login route
 Route::post('/login', [AuthController::class, 'login']);
