@@ -6,6 +6,7 @@ use App\Http\Controllers\SignupController;
 use App\Http\Controllers\createTeamController;
 use App\http\Controllers\BrowseFieldsController;
 use App\Http\Controllers\ViewFieldDetailsController;
+use App\Http\Controllers\BookingFieldController;
 
 // login route
 Route::post('/login', [AuthController::class, 'login']);
@@ -24,3 +25,6 @@ Route::middleware('auth:api')->get('/Browsefields', [BrowseFieldsController::cla
 
 //View Field Details
 Route::middleware('auth:api')->get('/ViewFieldDetails',[ViewFieldDetailsController::class, 'view']);
+
+//Booking Field
+Route::middleware('auth:api')->post('/bookingfield', [BookingFieldController::class, 'store']);

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Field;
-//use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Auth;
 
 class BrowseFieldsController extends Controller
