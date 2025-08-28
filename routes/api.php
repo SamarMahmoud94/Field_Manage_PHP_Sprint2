@@ -8,19 +8,18 @@ use App\http\Controllers\BrowseFieldsController;
 use App\Http\Controllers\ViewFieldDetailsController;
 use App\Http\Controllers\BookingFieldController;
 use App\Http\Controllers\Api\Auth\PasswordResetController;
+use App\Http\Controllers\EnquiryController;
+use App\Http\Controllers\SettingController;
+
 
 //reset password 
 Route::post('/forgot-password', [PasswordResetController::class, 'forgotPassword']);
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword']);
-// update profile 
 
+// update profile 
 Route::middleware('auth:api')->group(function () {
     Route::post('/profile/update', [App\Http\Controllers\Api\Auth\ProfileController::class, 'update']);
 });
-
-use App\Http\Controllers\EnquiryController;
-use App\Http\Controllers\SettingController;
-
 
 // login route
 Route::post('/login', [AuthController::class, 'login']);
