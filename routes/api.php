@@ -7,6 +7,12 @@ use App\Http\Controllers\createTeamController;
 use App\http\Controllers\BrowseFieldsController;
 use App\Http\Controllers\ViewFieldDetailsController;
 use App\Http\Controllers\BookingFieldController;
+use App\Http\Controllers\Api\Auth\PasswordResetController;
+
+
+Route::post('/forgot-password', [PasswordResetController::class, 'forgotPassword']);
+Route::post('/reset-password', [PasswordResetController::class, 'resetPassword']);
+
 
 // login route
 Route::post('/login', [AuthController::class, 'login']);
