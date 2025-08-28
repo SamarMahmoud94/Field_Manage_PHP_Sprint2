@@ -19,4 +19,7 @@ class Setting extends Model
         'phone_number',
         'second_phone_number'
     ];
+
+    public $timestamps = false; // to unable created_at and updated_at in laravel
+
 }
