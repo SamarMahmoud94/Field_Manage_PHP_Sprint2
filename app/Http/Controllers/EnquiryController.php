@@ -16,13 +16,13 @@ class EnquiryController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        // Only admins can submit enquiries
-        if ($user->role !== 'admin') {
-            return response()->json([
-                'success' => false,
-                'message' => 'Only admins can submit enquiries.'
-            ], 403);
-        }
+        // // Only admins can submit enquiries
+        // if ($user->role !== 'admin') {
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => 'Only admins can submit enquiries.'
+        //     ], 403);
+        // }
 
         // Validate content
         $request->validate([

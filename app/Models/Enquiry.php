@@ -10,6 +10,8 @@ class Enquiry extends Model
 
     protected $fillable = ['user_id', 'content'];
 
+    public $timestamps = false; // to unable created_at and updated_at in laravel
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

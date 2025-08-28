@@ -17,17 +17,7 @@ class SignupController extends Controller
             'email' => 'required|string|email|max:100|unique:user,email',
             'phone' => 'nullable|string|max:20',
             'password' => 'required|string|min:6|confirmed', // password_confirmation required
-            'role' => [
-                'required',
-                'string',
-                function ($attribute, $value, $fail) {
-                    if (!in_array($value, ['admin', 'player'])) {
-                        return response()->json([
-                            'error' => 'Only admin and player are the available roles'
-                        ], 403);
-                    }
-                }
-            ],
+            'role' => 'required|string|in:admin, player',
         ]);
 
         // 2) Create user
@@ -38,6 +28,11 @@ class SignupController extends Controller
             'password' => bcrypt($validated['password']),
             'role' => $validated['role'],
         ]);
+
+        // 3) check user role is admin or player
+        if ($user->role !== 'admin' && $user->role !== 'player') {
+            return response()->json(['error' => 'Only admin and player are the available roles'], 403);
+        }
 
         // 3) Generate JWT token immediately after signup
         $token = Auth::guard('api')->login($user);
