@@ -8,7 +8,7 @@ class Enquiry extends Model
 {
     protected $table = 'enquiry';
 
-    protected $fillable = ['user_id', 'content'];
+    protected $fillable = ['user_id', 'content', 'is_hidden'];
 
     public $timestamps = false; // to unable created_at and updated_at in laravel
 
