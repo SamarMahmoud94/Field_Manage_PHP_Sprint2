@@ -10,6 +10,7 @@ use App\Http\Controllers\BookingFieldController;
 use App\Http\Controllers\Api\Auth\PasswordResetController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ViewTeamController;
 
 
 //reset password 
@@ -53,3 +54,9 @@ Route::post('/settings', [SettingController::class, 'create'])->middleware('auth
 
 // Update Setting by admin route
 Route::put('/settings', [SettingController::class, 'update'])->middleware('auth:api');
+
+// View all teams
+Route::get('/teams', [ViewTeamController::class, 'viewAllTeams'])->middleware('auth:api');
+
+// View specific team using the team id
+Route::get('/teams/{id}', [ViewTeamController::class, 'viewTeam'])->middleware('auth:api');
