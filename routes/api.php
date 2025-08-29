@@ -8,6 +8,7 @@ use App\http\Controllers\BrowseFieldsController;
 use App\Http\Controllers\ViewFieldDetailsController;
 use App\Http\Controllers\BookingFieldController;
 use App\Http\Controllers\Api\Auth\PasswordResetController;
+<<<<<<< HEAD
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ViewTeamController;
@@ -16,6 +17,25 @@ use App\Http\Controllers\ViewTeamController;
 //reset password 
 Route::post('/forgot-password', [PasswordResetController::class, 'forgotPassword']);
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword']);
+=======
+use App\Http\Controllers\UserController;
+//reset password 
+Route::post('/forgot-password', [PasswordResetController::class, 'forgotPassword']);
+Route::post('/reset-password', [PasswordResetController::class, 'resetPassword']);
+
+// activate and deavtivate 
+
+Route::middleware('auth:api')->group(function() {
+    Route::post('/user/{id}/toggle-status', [App\Http\Controllers\Api\Auth\UserController::class, 'toggleStatus']);
+});
+
+
+// Route::middleware('auth:api')->post('/user/{id}/toggle-status', [UserController::class, 'toggleStatus']);
+
+
+
+// update profile 
+>>>>>>> activate_deactivate_api
 
 // update profile 
 Route::middleware('auth:api')->group(function () {
