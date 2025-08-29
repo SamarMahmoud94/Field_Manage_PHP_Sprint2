@@ -11,7 +11,8 @@ use App\Http\Controllers\Api\Auth\PasswordResetController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ViewTeamController;
-
+use App\Http\Controllers\ManagementReviewController;
+use App\Http\Controllers\ManagementEnquiryController;
 
 //reset password 
 Route::post('/forgot-password', [PasswordResetController::class, 'forgotPassword']);
@@ -60,3 +61,17 @@ Route::get('/teams', [ViewTeamController::class, 'viewAllTeams'])->middleware('a
 
 // View specific team using the team id
 Route::get('/teams/{id}', [ViewTeamController::class, 'viewTeam'])->middleware('auth:api');
+
+//Management Reviews
+//get reviews
+Route::middleware('auth:api')->get('/AllReview', [ManagementReviewController::class, 'index']);
+//hide review
+Route::middleware('auth:api')->post('/HideReview', [ManagementReviewController::class, 'hide']);
+//delete review
+Route::middleware('auth:api')->delete('/DeleteReview', [ManagementReviewController::class, 'destroy']);
+
+//Management Enquiry
+//get enqeiry
+Route::middleware('auth:api')->get('/AllEnquiry', [ManagementEnquiryController::class, 'index']);
+//hide enquiry
+Route::middleware('auth:api')->post('/HideEnquiry', [ManagementEnquiryController::class, 'hide']);
