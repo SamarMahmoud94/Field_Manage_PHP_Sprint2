@@ -8,17 +8,16 @@ use App\http\Controllers\BrowseFieldsController;
 use App\Http\Controllers\ViewFieldDetailsController;
 use App\Http\Controllers\BookingFieldController;
 use App\Http\Controllers\Api\Auth\PasswordResetController;
-<<<<<<< HEAD
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ViewTeamController;
 use App\Http\Controllers\ManagementReviewController;
 use App\Http\Controllers\ManagementEnquiryController;
+use App\Http\Controllers\CreateReviewController;
 
 //reset password 
 Route::post('/forgot-password', [PasswordResetController::class, 'forgotPassword']);
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword']);
-=======
 use App\Http\Controllers\UserController;
 //reset password 
 Route::post('/forgot-password', [PasswordResetController::class, 'forgotPassword']);
@@ -36,7 +35,6 @@ Route::middleware('auth:api')->group(function() {
 
 
 // update profile 
->>>>>>> activate_deactivate_api
 
 // update profile 
 Route::middleware('auth:api')->group(function () {
@@ -95,3 +93,6 @@ Route::middleware('auth:api')->delete('/DeleteReview', [ManagementReviewControll
 Route::middleware('auth:api')->get('/AllEnquiry', [ManagementEnquiryController::class, 'index']);
 //hide enquiry
 Route::middleware('auth:api')->post('/HideEnquiry', [ManagementEnquiryController::class, 'hide']);
+
+//create review
+Route::middleware('auth:api')->post('/createRview', [CreateReviewController::class, 'store']);
