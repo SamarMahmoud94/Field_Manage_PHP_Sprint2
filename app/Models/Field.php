@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Field extends Model
 {
     protected $table = 'field';
-    public $timestamps = false; 
+    public $timestamps = false;
     protected $fillable = ['name', 'images', 'players_capacity'];
 
     public function slots()

@@ -33,6 +33,7 @@ class EnquiryController extends Controller
         $enquiry = Enquiry::create([
             'user_id' => $user->id,
             'content' => $request->content,
+            'is_hidden' => false,
         ]);
 
         return response()->json([
