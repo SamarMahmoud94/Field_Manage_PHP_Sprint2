@@ -16,12 +16,14 @@ use App\Http\Controllers\ManagementEnquiryController;
 use App\Http\Controllers\CRUDFieldController;
 use App\Http\Controllers\FieldSlotController;
 use App\Http\Controllers\WeekDayController;
+use App\Http\Controllers\CreateReviewController;
 
 //reset password 
 Route::post('/forgot-password', [PasswordResetController::class, 'forgotPassword']);
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword']);
 
 use App\Http\Controllers\UserController;
+
 //reset password 
 Route::post('/forgot-password', [PasswordResetController::class, 'forgotPassword']);
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword']);
@@ -35,6 +37,9 @@ Route::middleware('auth:api')->group(function () {
 
 // Route::middleware('auth:api')->post('/user/{id}/toggle-status', [UserController::class, 'toggleStatus']);
 
+
+
+// update profile 
 
 // update profile 
 Route::middleware('auth:api')->group(function () {
@@ -93,6 +98,9 @@ Route::middleware('auth:api')->delete('/DeleteReview', [ManagementReviewControll
 Route::middleware('auth:api')->get('/AllEnquiry', [ManagementEnquiryController::class, 'index']);
 //hide enquiry
 Route::middleware('auth:api')->post('/HideEnquiry', [ManagementEnquiryController::class, 'hide']);
+
+//create review
+Route::middleware('auth:api')->post('/createRview', [CreateReviewController::class, 'store']);
 
 // CRUD Field by admin routes
 // Create field route
