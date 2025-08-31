@@ -11,33 +11,29 @@ class SignupController extends Controller
 {
     public function register(Request $request)
     {
-        // 1) Validate input
-        $validated = $request->validate([
-            'name' => 'required|string|max:100',
-            'email' => 'required|string|email|max:100|unique:user,email',
-            'phone' => 'nullable|string|max:20',
+        $request->validate([
+            'name'     => 'required|string|max:100',
+            'email'    => 'required|string|email|max:100|unique:user,email',
+            'phone'    => 'nullable|string|max:20',
             'password' => 'required|string|min:6|confirmed', // password_confirmation required
-            'role' => 'required|string|in:admin, player',
+            'role'     => 'required|string|in:admin,player',
         ]);
 
-        // 2) Create user
+        // Create user 
         $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'phone' => $validated['phone'] ?? null,
-            'password' => bcrypt($validated['password']),
-            'role' => $validated['role'],
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'phone'    => $request->phone,
+            'password' => bcrypt($request->password),
+            'role'     => $request->role,
+            'is_active' => 1,
         ]);
 
-        // 3) check user role is admin or player
-        if ($user->role !== 'admin' && $user->role !== 'player') {
-            return response()->json(['error' => 'Only admin and player are the available roles'], 403);
-        }
+        // if ($user->role !== 'admin' && $user->role !== 'player') {
+        //     return response()->json(['error' => 'Only admin and player are the available roles'], 403);
+        // }
 
-        // 3) Generate JWT token immediately after signup
         $token = Auth::guard('api')->login($user);
-
-        // 4) Return response
         return response()->json([
             'message' => 'User ' . $user->name . ' registered successfully',
             'user' => $user,
